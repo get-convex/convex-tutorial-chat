@@ -1,5 +1,6 @@
 import { query, mutation } from "./_generated/server";
 import { v } from "convex/values";
+import { api } from "./_generated/api";
 
 export const list = query({
   args: {},
@@ -34,6 +35,13 @@ export const send = mutation({
   handler: async (ctx, args) => {
     // Send a new message.
     await ctx.db.insert("messages", { body: args.body, author: args.author });
+
+    if (args.body.startsWith("@ai")) {
+      // Schedule the chat Action to run immediately
+      await ctx.scheduler.runAfter(0, api.ai.chat, {
+        messageBody: args.body,
+      });
+    }
   },
 });
 
