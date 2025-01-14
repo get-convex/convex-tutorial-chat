@@ -15,7 +15,7 @@ const seedMessages = [
   ["Arya", "Hi :) Yeah me too!", 1000],
   [
     "Evelyn",
-    "I was playing with ChatGPT this weekend and I think we could hook it up to this app!",
+    "I was playing with AI this weekend and I think we could hook it up to this app!",
     600,
   ],
   ["Omar", "Sounds like a plan", 5000],
